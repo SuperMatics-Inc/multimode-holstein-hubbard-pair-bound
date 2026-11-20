@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: Please cite the preprint and this software supplement.
+type: software
+title: Finite replay for a frequency-uniform multi-mode Holstein-Hubbard pair bound
+version: 1.0.0
+license: Apache-2.0
+authors:
+  - family-names: Rens
+    given-names: Davis
+    affiliation: SuperMatics Inc.
+    orcid: 'https://orcid.org/0000-0001-5839-5197'
+doi: 10.5281/zenodo.24384463
+repository-code: 'https://github.com/SuperMatics-Inc/multimode-holstein-hubbard-pair-bound'
+preferred-citation:
+  type: article
+  title: A frequency-uniform pair bound for a multi-mode Holstein-Hubbard model
+  authors:
+    - family-names: Rens
+      given-names: Davis
+      affiliation: SuperMatics Inc.
+      orcid: 'https://orcid.org/0000-0001-5839-5197'
+  doi: 10.5281/zenodo.24384461
+  year: 2026

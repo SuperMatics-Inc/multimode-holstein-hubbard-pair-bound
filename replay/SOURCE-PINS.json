@@ -1,0 +1,17 @@
+{
+  "algorithm": "sha256",
+  "files": [
+    {
+      "path": "ADIABATIC/EXTHOL/RIGOR.md",
+      "sha256": "b92d7b423e64be51b530c468fc43bc3144652f20674558a1e86cce817be6510d"
+    },
+    {
+      "path": "ADIABATIC/EXTHOL/RESULT.md",
+      "sha256": "fd80b3e4c4b612110edf4addebecebdccefac70775fa262bf161820117de4357"
+    },
+    {
+      "path": "ADIABATIC/EXTHOL/replay.py",
+      "sha256": "e926e9cc641e6002c0f3acb37cbe1750dbe990575f34c621180357d5402135dd"
+    }
+  ]
+}

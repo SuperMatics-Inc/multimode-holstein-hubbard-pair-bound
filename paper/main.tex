@@ -1,0 +1,199 @@
+\documentclass[11pt]{article}
+\usepackage[hmargin=1in,vmargin=0.9in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks,pdfusetitle]{hyperref}
+\usepackage{microtype}
+\newcommand{\DOI}[1]{\href{https://doi.org/#1}{\nolinkurl{#1}}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\dist}{dist}
+\newcommand{\Deltaop}{\Delta}
+\newcommand{\Nodd}{N_{\mathrm{odd}}}
+\title{A frequency-uniform pair bound for a multi-mode Holstein-Hubbard model}
+\author{Davis Rens\\SuperMatics Inc.\\\href{https://orcid.org/0000-0001-5839-5197}{ORCID 0000-0001-5839-5197}}
+\date{\scriptsize Article DOI: \DOI{10.5281/zenodo.24384461}}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For spinful electrons on square tori, we prove an explicit strong-coupling bound on equal-time on-site pair correlations in a Holstein-Hubbard model with finitely many independent optical modes at each site. If $u=\sum_r F_r^2/K_r$ and $U_{\rm eff}=u-U_c>0$, then the bound is uniform in every positive mode frequency and holds when $\beta t^2/U_{\rm eff}\le 2^{-27}$. The correlation constants are $240/59$ and $5/64$, independent of the number of modes. The resulting pair-temperature ceiling is $k_B T_{\rm pair}\le 2^{27}t^2/U_{\rm eff}=2^{26}t^2/G$, where $G=U_{\rm eff}/2$. An oscillator-only unitary gives the same conclusion for nonlocal force rows with an exact common-frequency Gram identity, or group by group at equal frequencies. For general nonlocal forces, two finite examples show that the disjoint-support factorization used in the proof method can fail. They do not imply absence of pair decay by other methods.
+\end{abstract}
+
+\section{Model and theorem}
+Let $\Lambda_M=(\mathbb Z/M\mathbb Z)^2$, with $M\ge4$, nearest-neighbor graph distance $d_\Lambda$, and two fermion modes $c_{i\sigma}$ at each site. Set $n_i=n_{i\uparrow}+n_{i\downarrow}$, $q_i=n_i-1$, and $\Deltaop_i=c_{i\downarrow}c_{i\uparrow}$. In units with $\hbar=1$, take $R<\infty$ independent oscillators per site and the centered Hamiltonian
+\begin{align}
+H={}&-t\sum_{\langle ij\rangle,\sigma}
+(c_{i\sigma}^\dagger c_{j\sigma}+c_{j\sigma}^\dagger c_{i\sigma})
++\sum_{j,r}\left(\frac{p_{jr}^2}{2M_r}+\frac{K_r x_{jr}^2}{2}\right)\notag\\
+&+\sum_{i,j,r}f_r(i-j)q_i x_{jr}
++U_c\sum_i\left(n_{i\uparrow}-\tfrac12\right)
+\left(n_{i\downarrow}-\tfrac12\right)-\mu\sum_iq_i .
+\label{eq:model}
+\end{align}
+Here $[x_{jr},p_{ks}]=i\delta_{jk}\delta_{rs}$, $M_r,K_r>0$, $\Omega_r=\sqrt{K_r/M_r}>0$, $f_r$ is real, $t\ge0$, $U_c\ge0$, and $\mu$ is any real centered chemical potential. For local forces, $f_r(d)=F_r\delta_{d,0}$ with real $F_r$, define
+\[
+ u=\sum_{r=1}^R\frac{F_r^2}{K_r},\qquad U_{\rm eff}=u-U_c,\qquad G=\frac{U_{\rm eff}}2.
+\]
+We write $\langle\cdot\rangle_{\beta,\Lambda_M}$ for the finite-volume grand-canonical state.
+
+\begin{theorem}[Local multi-mode bound]\label{thm:local}
+Suppose $U_{\rm eff}>0$ and $\beta t^2/U_{\rm eff}\le2^{-27}$. For every $\beta>0$, every choice of the finite set of positive frequencies $\Omega_r$, all real $\mu$, and distinct $x,y\in\Lambda_M$,
+\[
+\left|\left\langle\Deltaop_x^\dagger\Deltaop_y\right\rangle_{\beta,\Lambda_M}\right|
+\le \frac{240}{59}\left(\frac5{64}\right)^{d_\Lambda(x,y)}.
+\]
+The absolute row sum of the finite-volume on-site pair-correlation matrix is at most $512579/205379$. The estimates are independent of $R$, the mode couplings, and all positive frequencies, subject to the stated $U_{\rm eff}$. They transfer to translation-invariant canonical thermodynamic limits at every density $\rho\in(0,2)$, but are not uniform finite-volume canonical bounds. With $T_{\rm pair}$ defined by the onset of nonexponential thermodynamic correlations of the on-site fields $\Deltaop_x$,
+\[
+ k_BT_{\rm pair}\le 2^{27}\frac{t^2}{U_{\rm eff}}=2^{26}\frac{t^2}{G}.
+\]
+At one mode and $U_c=0$, this is exactly $2^{27}t^2/U$ with $U=F^2/K$, the bound in \emph{Strong-coupling suppression of electronic pair order in the Holstein model, uniformly in phonon frequency and without a hopping cutoff} \cite{strongcoupling}.
+\end{theorem}
+
+\section{Proof of the local bound}
+The argument follows the connected-bond expansion and the real-source transfer developed for the single-mode Holstein result \cite{strongcoupling} and its on-site Hubbard extension \cite{hubbardholstein}. We give the changes and the constants needed here. Specifically, we use the corrected chronological trace identity for a harmonic oscillator, the hard-core polymer tree bound and its deletion estimate, and the real-source pressure-to-canonical argument of those papers. The mode-by-mode trace, local atomic estimates, edge inequality, activity bounds, and source constants are established below; no nonlocal factorization is imported.
+
+\subsection{Atomic reduction and oscillator trace}
+For local coupling the Lang-Firsov unitary is generated by
+\[
+ S=\sum_{i,r}\frac{F_r}{\sqrt{2K_r\Omega_r}}q_i(a_{ir}^\dagger-a_{ir}),
+\]
+where $x_{ir}=(a_{ir}+a_{ir}^\dagger)/\sqrt{2M_r\Omega_r}$. Completing each oscillator square gives, up to a scalar,
+\[
+ D_0=G\Nodd-\mu\sum_iq_i,\qquad
+ \Nodd=\sum_i\mathbf 1[n_i=1].
+\]
+The Hubbard contribution is unchanged by the transformation. On a closed occupation trajectory $n_i(s)$, the normalized trace of all independent oscillators is $e^{-\Phi}$, where
+\begin{align}
+\Phi&=\frac14\sum_{i,r}\int_0^\beta\!\int_0^\beta
+[n_i(s)-n_i(s')]^2K_{r,\beta}(s-s')\,ds\,ds',\\
+K_{r,\beta}(w)&=\frac{U_r\Omega_r}{2}
+\frac{e^{-\Omega_rw}+e^{-\Omega_r(\beta-w)}}{1-e^{-\beta\Omega_r}},\qquad
+0\le w\le\beta,\quad U_r=\frac{F_r^2}{K_r},\quad \int_0^\beta K_{r,\beta}(w)\,dw=U_r,
+\label{eq:kernel}
+\end{align}
+where $K_{r,\beta}$ is extended $\beta$-periodically.
+The chronological product is ordered with the latest imaginary time on the left, including marked pair insertions. Applying the corrected infinite-oscillator identity separately to every $(i,r)$ gives \eqref{eq:kernel}; every kernel is nonnegative, so $0<e^{-\Phi}\le1$. This is an exact trace on the full oscillator Fock space, not an oscillator cutoff. Because each site acts on its own oscillator collection and the atomic electronic energy is a sum of site terms, disjoint electronic supports have independent normalized reference weights in this local model.
+
+\subsection{Bond estimate, cap, and spatial sum}
+Let $E$ be a connected set of $k$ physical bonds with endpoint set $S_E$ and $v=|S_E|$. Let $B_e$ be the signless spinful hopping matrix on the two sites of $e$, and $B_E=\sum_{e\in E}B_e$. For every $g\ge0$ and $\alpha>0$, the exact bond sum-of-squares inequality is
+\[
+ gB_e\le\alpha(\mathbf 1_{\mathrm{odd},u}+\mathbf 1_{\mathrm{odd},v})+
+ \frac{2g^2}{\alpha}I .
+\]
+It holds in each exact bond particle-number sector $N_e\in\{0,1,2,3,4\}$; the three algebraic classes cover all four site cost operators. The coefficient $2$ is essential. Summing over $E$, using degree at most four and choosing $\alpha=U_{\rm eff}/16=G/8$, leaves an odd-site cost $U_{\rm eff}/4$ and scalar $32kg^2/U_{\rm eff}$.
+
+Write $z=e^{\beta\mu}$ and $w=e^{-\beta U_{\rm eff}/4}$. After a common one-site factor is removed, the atomic and relaxed one-site traces are
+\[
+ z_a=1+z^2+2zw^2,\qquad z_b=1+z^2+2zw,
+\]
+and
+\[
+5z_a-4z_b=(1-z)^2+2z(2w-1)^2+2zw^2\ge0,
+\]
+so $z_b/z_a\le5/4$ uniformly in $\beta$ and $\mu$. Let $L=1024$ and
+\[
+ P_E(L)=\frac{\Tr_{\rm el}\exp[-\beta(D_{0,S_E}-LtB_E)]}{z_a^v}.
+\]
+Taking absolute values term by term in the Dyson expansion and using the oscillator contraction gives for the signed activity $w(E)$ and its marked pair activity $w_{xy}(E)$
+\[
+ |w(E)|,\ |w_{xy}(E)|\le L^{-k}P_E(L).
+\]
+The bond inequality and eigenvalue ordering for finite Hermitian matrices then yield
+\[
+ P_E(L)\le (5/4)^v\exp\!\left(\frac{32k\beta L^2t^2}{U_{\rm eff}}\right).
+\]
+This trace comparison uses ordered eigenvalues and scalar monotonicity of the exponential, not operator monotonicity of the matrix exponential. Under the theorem hypothesis, the exponent per edge is at most $1/4$. Since $v\le k+1$ and $e^{1/4}<4/3$,
+\[
+ |w(E)|,\ |w_{xy}(E)|\le \frac54\left[\frac{(5/4)e^{1/4}}{L}\right]^k.
+\]
+
+The connected physical-support expansion is a hard-core gas: distinct polymers with disjoint vertex supports factor, and intersecting supports are incompatible. The Koteck\'y-Preiss site criterion and deletion estimate used here are established for the cited expansion \cite{strongcoupling}. A deterministic doubled-edge Euler walk bounds the number of connected $k$-edge supports at a fixed root by $16^k$, including cycles. With the deletion factor $e^v$, the rooted site sum is bounded using
+\[
+ q=\frac{16(5/4)\,3(4/3)}{1024}=\frac5{64},\qquad
+ \frac{15}{4}\frac{q}{1-q}=\frac{75}{236}<1.
+\]
+The marked support joining $x$ to $y$ contains at least $d_\Lambda(x,y)$ edges. The exact deletion ratio for the remaining gas therefore gives
+\[
+ \left|\left\langle\Deltaop_x^\dagger\Deltaop_y\right\rangle\right|
+ \le\frac{15}{4}\sum_{k\ge d_\Lambda(x,y)}q^k
+ =\frac{240}{59}q^{d_\Lambda(x,y)}.
+\]
+Summing shells of at most $4d$ sites at distance $d$ gives the stated row sum.
+
+For canonical transfer, use the two pair-source labels per marked displacement from the cited real-source argument. Their operators have norm at most two and preserve local parity. The source-augmented graph has degree at most six and rooted count at most $36^k$. For $\tau=\beta^{-1}$ the pressure expansion is analytic for $|\xi|\le\tau/2^{14}$; the source penalty is at most $1/8$ per label, and its ratio and site budget are
+\[
+ q_{\rm src}=\frac{45}{256},\qquad
+ \frac{15}{4}\frac{q_{\rm src}}{1-q_{\rm src}}=\frac{675}{844}<1.
+\]
+These estimates are uniform in volume and chemical potential. The established real-source free-energy and Legendre transfer then gives the same pair bound in translation-invariant canonical thermodynamic limits at each interior density. It does not assert a finite-volume canonical bound at fixed particle number. Since the theorem excludes nonexponential pair correlations whenever $k_BT\ge2^{27}t^2/U_{\rm eff}$, its temperature statement follows.
+
+\section{An orthogonal reduction for nonlocal forces}
+For general translation-invariant forces define the static Gram interaction
+\[
+ U_{ik}=\sum_{j,r}\frac{f_r(i-j)f_r(k-j)}{K_r}.
+\]
+The common-frequency case admits a precise exception to the generic nonlocal difficulty.
+
+\begin{theorem}[Common-frequency orthogonal forces]\label{thm:orthogonal}
+Suppose all modes have the same frequency $\Omega>0$ and, on each finite square torus,
+\[
+ \sum_{j,r}\frac{f_r(i-j)f_r(k-j)}{K_r}=u\,\delta_{ik},\qquad u>U_c.
+\]
+Then Theorem~\ref{thm:local} holds with $U_{\rm eff}=u-U_c$ and $G=U_{\rm eff}/2$, although individual force rows may be nonlocal.
+\end{theorem}
+
+\begin{proof}
+Set $Q_{jr}=\sqrt{M_r\Omega}\,x_{jr}$ and $P_{jr}=p_{jr}/\sqrt{M_r\Omega}$. They are canonical coordinates and the oscillator Hamiltonian is $\frac{\Omega}{2}\sum_{j,r}(P_{jr}^2+Q_{jr}^2)$. The vectors
+\[
+ h_i(j,r)=\frac{f_r(i-j)}{\sqrt{K_ru}}
+\]
+are orthonormal by the Gram hypothesis. Complete them to a real orthonormal basis of the oscillator coordinate space, and apply the same orthogonal matrix to $Q$ and $P$. The transformation is implemented on oscillator wave functions by the unitary coordinate rotation $\psi(Q)\mapsto\psi(O^TQ)$; it acts trivially on the fermions. The oscillator energy is invariant, while the coupled term becomes $\sum_i\sqrt{\Omega u}\,q_iQ'_i$. Thus there is one bright oscillator per site, with coupling strength $2g_0^2/\Omega=u$ for $g_0=\sqrt{\Omega u/2}$ (equivalently effective local parameters $F'=u^{1/2}$ and $K'=1$), and the remaining dark oscillators decouple. The electronic hopping, Hubbard term, chemical potential, and pair observables are unchanged. Dark-mode traces cancel from normalized correlations, leaving exactly the local model of Theorem~\ref{thm:local}.
+\end{proof}
+
+If modes are partitioned into equal-frequency groups indexed by $g$, the same rotation can be performed within each group whenever
+\[
+ \sum_{j,r\in g}\frac{f_r(i-j)f_r(k-j)}{K_r}=u_g\delta_{ik},\qquad u_g\ge0.
+\]
+There is then one on-site bright mode for each nonzero group, with frequency $\Omega_g$ and coupling strength $u_g$. The local theorem applies with $u=\sum_g u_g$ whenever $u>U_c$. It is not enough for only the total static Gram matrix to be diagonal when frequencies differ: rotations mixing unequal frequencies do not preserve the oscillator Hamiltonian. For example, on a four-cycle the rows $f_1=(1,1/8,0,0)$ and $f_2=(1,-1/8,0,0)$, with $K_1=K_2=1$ and $\Omega_1=1$, $\Omega_2=3$, cancel the total static nearest-neighbor Gram entries but have a nonzero dynamic cross exponent.
+
+\section{What fails for general nonlocal forces}
+The nonlocal Lang-Firsov transformation remains valid. For a closed trajectory, the oscillator trace is a Gaussian with nonnegative action and hence remains at most one. However, disjoint electronic supports can act on common oscillators, and the off-diagonal terms $U_{ik}$ couple their atomic weights. The product reference required to write the partition function as a gas of independent connected physical-support activities is then absent. The examples below show failure of that particular factorization even under a diagonal-dominance condition; neither is a no-go result for the model or for other expansions.
+
+\subsection{Electronic reference witness}
+On a four-cycle take $U_c=\mu=0$ and the Gram kernel with $U_{00}=1$, $U_{01}=U_{03}=1/16$, and $U_{02}=0$. It is realized by two horizontal branches, $f_1=(1/4,1/4,0,0)$ with $K_1=1$, and $f_2=(1,0,0,0)$ with $K_2=8/7$. Its off-diagonal row sum is $\Delta_1=1/8\le U_{00}/4$. The Lang-Firsov electronic reference is
+\[
+ D_0=-\frac12\sum_iq_i^2-\frac1{16}\sum_iq_iq_{i+1}.
+\]
+At $\beta=1$ and $t=1/8$, retain hopping only on the disjoint edges $e_0=\{0,1\}$ and $e_2=\{2,3\}$. Let $Z_\emptyset,Z_0,Z_2,Z_{02}$ be the exact electronic partition functions with neither edge, either one, or both. A product rule for these supports would require
+\[
+ Z_{02}Z_\emptyset=Z_0Z_2.
+\]
+The replay evaluates the spinful CAR traces, including all 256 electronic states, by particle-number blocks and outward interval matrix exponentials; the interval for $Z_{02}Z_\emptyset-Z_0Z_2$ is strictly positive. Thus the support-activity identity itself fails, not merely independence of the zero-hopping atomic Gibbs measure.
+
+\subsection{Finite-frequency oscillator witness}
+On a four-cycle take one mode with $K=1$, $f=(1,1/16,0,0)$, $\Omega=6/5$, and $\beta=1$. Then $U_{00}=257/256$, $U_{01}=U_{03}=1/16$, and $\Delta_1=1/8\le U_{00}/4$. A hop and return on $e_0$ occur at $s_1=1/5,s_2=3/5$, and on the disjoint edge $e_2$ at $u_1=2/5,u_2=4/5$. For
+\[
+ g_\Omega(w)=\frac{\cosh[\Omega(1/2-w)]}{\sinh(\Omega/2)},
+\]
+the exact Gaussian cross term is
+\begin{align*}
+\log\frac{P_{02}}{P_0P_2}=\frac{1}{16\Omega}\bigl[&g_\Omega(|s_1-u_1|)-g_\Omega(|s_1-u_2|)\\
+&-g_\Omega(|s_2-u_1|)+g_\Omega(|s_2-u_2|)\bigr]
+=\frac{g_\Omega(1/5)-g_\Omega(2/5)}{16\Omega}>0.
+\end{align*}
+Here $g_\Omega(3/5)=g_\Omega(2/5)$ and $g_\Omega$ decreases on $[0,1/2]$. Hence $P_{02}>P_0P_2$ for disjoint supports. The replay independently evaluates the chronological oscillator traces with outward intervals. Together the two examples isolate failures of the electronic product reference and the finite-frequency oscillator factorization. They do not establish that generic nonlocal pair correlations fail to decay.
+
+\section{Computer-assisted checks and unresolved questions}
+The accompanying supplement contains \texttt{replay.py}, a deterministic replay of the finite checks. It uses exact rational arithmetic for rational matrices and algebraic witnesses, and 70-digit outward intervals for matrix exponentials. The interval exponential uses a Taylor sum with an induced one-norm remainder bound added to each entry. The replay checks centering and Gram identities, torus folding, the electronic and oscillator factorization witnesses, the orthogonal-kernel example, the atomic parity bound, CAR bond algebra, the bond sum-of-squares coefficient, and the cap, cluster, source, and row-sum constants. Its guarded-mutation mode checks that all 20 altered variants are rejected. The expected process exit status is zero for both the base replay and the complete mutation run; each deliberately altered child must itself exit with status one and its expected rejection prefix. These finite calculations do not formalize the infinite-oscillator trace identity, the graph-general cluster expansion, or the canonical pressure argument, which remain analytic parts of the proof.
+
+A frequency-uniform pair bound for generic summable nonlocal forces, including kernels with small off-diagonal row sum but without an exact orthogonal reduction, remains unresolved. The present examples obstruct one product-factorization method only. A nonproduct reference or a different resummation could still establish such a bound.
+
+\section*{Supporting material and disclosure}
+% DOI-SUPP: 10.5281/zenodo.24384463.
+The finite replay and its run instructions are in the accompanying supplement. Supplement DOI: \DOI{10.5281/zenodo.24384463}. AI agents generated the proofs, code, and drafts under D. Rens' direction. Independent reviews were performed by separate AI agents. This preprint has not been peer reviewed.
+
+{\raggedright\small\bibliographystyle{plain}\bibliography{refs}\par}
+\end{document}
